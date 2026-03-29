@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="zh-Hans" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark light" />
+    <title>张益珲</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Background Layers -->
+    <div class="bg-noise" aria-hidden="true"></div>
+    <div class="bg-blobs" aria-hidden="true">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+    
+    <!-- Interactive Canvas Background (Antigravity effect) -->
+    <canvas id="interactive-canvas" aria-hidden="true"></canvas>
+
+    <!-- Cursor Spotlight Glow -->
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+    <!-- Theme toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="切换浅色/深色主题">
+      <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+
+    <main class="page">
+      <!-- ============ HERO（在线落地页式头部） ============ -->
+      <header class="hero reveal">
+        <div class="hero-panel glass-card">
+          <div class="hero-grid">
+            <div class="hero-copy">
+              <h1 class="hero-name">张益珲</h1>
+              <p class="hero-title">iOS / 客户端 开发工程师</p>
+              <p class="hero-signature" lang="zh-Hans">保持好奇，保持谦卑</p>
+              <p class="hero-tagline">
+                深入 iOS 领域技术与性能优化，专注移动客户端、Web前端，JS与Python相关技术栈实践，交付高质量、高可维护的客户端架构。
+              </p>
+              <ul class="hero-highlights">
+                <li><strong>技术传播</strong>：开源中国高手问答特邀专家，撰写 iOS、前端、Swift 等博客 400 余篇（100余万字），阅读量 150W+。</li>
+                <li><strong>前沿探索</strong>：华为鸿蒙操作系统首批开发者、仓颉语言先批内测邀请者；阿里云乘风者计划技术专家。</li>
+                <li><strong>技术布道</strong>：51CTO、CSDN、麦子学院金牌/特邀讲师，发布课程 10 余套，课时达 500+ 小时。</li>
+              </ul>
+              <div class="hero-actions">
+                <a href="mailto:you@example.com" class="hero-cta">发邮件联系</a>
+                <ul class="hero-icon-row">
+                  <li>
+                    <a
+                      href="https://my.oschina.net/u/2340880/?key=blog"
+                      class="hero-icon-btn"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="开源中国博客"
+                      title="开源中国博客"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                        <line x1="8" y1="7" x2="16" y2="7" />
+                        <line x1="8" y1="11" x2="14" y2="11" />
+                      </svg>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="https://edu.51cto.com/lecturer/11633026.html"
+                      class="hero-icon-btn"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="51CTO 个人课堂"
+                      title="51CTO 个人课堂"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="2" y="3" width="20" height="14" rx="2" />
+                        <line x1="8" y1="21" x2="16" y2="21" />
+                        <line x1="12" y1="17" x2="12" y2="21" />
+                        <polygon points="10 8 16 11 10 14 10 8" fill="currentColor" stroke="none" />
+                      </svg>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <p class="hero-meta">
+                <span>1992 年生</span>
+                <span class="hero-meta-sep" aria-hidden="true">·</span>
+                <a href="mailto:you@example.com" class="hero-meta-link">316045346@qq.com</a>
+                <span class="hero-meta-sep" aria-hidden="true">·</span>
+                <span>上海 · 可远程</span>
+                <span class="hero-meta-sep" aria-hidden="true">·</span>
+                <span class="hero-meta-mono">UTC+8</span>
+              </p>
+            </div>
+            <aside class="hero-visual" aria-label="头像与标签">
+              <div class="avatar">
+                <img
+                  class="avatar-img"
+                  src="avatar.png"
+                  alt="你的名字"
+                  width="112"
+                  height="112"
+                  decoding="async"
+                />
+              </div>
+              <p class="hero-visual-caption">Swift · Objective-C · Apple 生态</p>
+            </aside>
+          </div>
+        </div>
+      </header>
+
+      <!-- ============ TECH STACK ============ -->
+      <section class="section reveal" aria-labelledby="skills-heading">
+        <h2 id="skills-heading" class="section-heading">
+          <span class="section-icon">⚡</span> 技术栈
+        </h2>
+        <div class="glass-card">
+          <div class="skills-group">
+            <h3 class="skills-group-title">语言与框架</h3>
+            <div class="pills">
+              <span class="pill pill--primary">Swift</span>
+              <span class="pill pill--primary">Objective-C</span>
+              <span class="pill">JavaScript/TypeScript</span>
+              <span class="pill">Python</span>
+              <span class="pill">ArkTS/ArkUI</span>
+              <span class="pill">UIKit/VUE</span>
+            </div>
+          </div>
+          <div class="skills-group">
+            <h3 class="skills-group-title">平台与工具</h3>
+            <div class="pills">
+              <span class="pill">Xcode</span>
+              <span class="pill">Instruments</span>
+              <span class="pill">SPM / CocoaPods</span>
+              <span class="pill">Xcode CLI</span>
+              <span class="pill">TestFlight</span>
+              <span class="pill">Git</span>
+              <span class="pill">Cursor</span>
+              <span class="pill">Codex</span>
+              <span class="pill">Antigravity</span>
+            </div>
+          </div>
+          <div class="skills-group">
+            <h3 class="skills-group-title">进阶方向</h3>
+            <div class="pills">
+              <span class="pill">Python</span>
+              <span class="pill">React</span>
+              <span class="pill">Jenkins</span>
+              <span class="pill">Gitlab CI/CD</span>
+              <span class="pill">AI Native / MVVM</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ EXPERIENCE (Timeline) ============ -->
+      <section class="section reveal" aria-labelledby="exp-heading">
+        <h2 id="exp-heading" class="section-heading">
+          <span class="section-icon">💼</span> 工作经历
+        </h2>
+        <div class="timeline">
+          <article class="timeline-item glass-card">
+            <div class="timeline-dot"></div>
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-company">上海易玩互动数字科技有限公司（心动网络/TapTap）</h3>
+                <p class="timeline-role">高级 iOS 工程师 · P3-1</p>
+              </div>
+              <time class="timeline-period">2022.10 — 至今</time>
+            </div>
+            <ul class="timeline-list">
+              <li>2022年-2025年 TapTap iOS 客户端负责人，从0到1构建iOS端产品，组建团队，搭建底层框架，组织团队完成产品迭代，优化性能，建设CI/CD流水线，日活40W+。</li>
+              <li>2025年-至今 TapTap iOS 客户端核心技术成员，把控产品质量线，持续防劣化，承担重要技术决策与核心业务研发，建设AI Rules, Tools, MCP与Plugin系统等。</li>
+              <li>始终承担性能优化与防劣化工作，保证产品质量底线，Crash率维持万5以下，冷起优化4s -> 1.5s，包体250M -> 77M，核心页面首屏性能优化1s+ -> 0.6s</li>
+              <li>自研Crash AI修复工具，Bug工单自动fix流程，API接口自动生成与维护，ProtoBuf自动生成与维护等提交工具和流程。</li>
+            </ul>
+          </article>
+          <article class="timeline-item glass-card">
+            <div class="timeline-dot"></div>
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-company">上海一谈网络科技有限公司（比心陪练）</h3>
+                <p class="timeline-role">iOS IM团队Owner · P3-1</p>
+              </div>
+              <time class="timeline-period">2019.10 — 2022.8</time>
+            </div>
+            <ul class="timeline-list">
+              <li>负责公司自研IM SDK的架构和开发，负责公司基础架构相关SDK的开发。管理IM团队。</li>
+              <li>在比心，鱼耳直播，鱼耳语音，糖果等众多公司项目中使用，承接了百万级流程的IM业务系统。支持私聊，群聊，红包，撤回，系统通知等完善的IM系统功能。此外，支持工具App矩阵战略，主导团队开发强定制性的IMUI SDK，实现公司新启项目，快速零成本接入IM模块</li>
+              <li>负责公司实时日志系统的客户端SDK研发，支持数据加密，聚合上报。设计大盘展示方案，对公司业务提供性能监控，异常日志监控告警等服务。</li>
+              <li>负责公司主产品的性能优化专项，包括冷启动时间监控和优化，OOM内存问题监控和优化，数据库性能优化，IM压测性能优化，野指针问题治理，代码OCLint静态检查。</li>
+              <li>推动公司产品App安全隐患问题处理，全栈HTTPS，持久化文件加密，DB加密，二进制文件检查等。开发对应的脚本工具，集成到公司的CI/CD流程。</li>
+            </ul>
+          </article>
+          <article class="timeline-item glass-card">
+            <div class="timeline-dot"></div>
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-company">上海语酷网络科技有限公司</h3>
+                <p class="timeline-role">技术部负责人 · 合伙人</p>
+              </div>
+              <time class="timeline-period">2017 — 2019</time>
+            </div>
+            <ul class="timeline-list">
+              <li>负责公司产品的总体技术研发，进度安排，人员招聘，核心模块的开发，跨平台移动端技术的开发。</li>
+              <li>基于区块链的社交应用，包含IM通讯，社区等功能，负责核心难点的开发。</li>
+            </ul>
+          </article>
+          <article class="timeline-item glass-card">
+            <div class="timeline-dot"></div>
+            <div class="timeline-header">
+              <div>
+                <h3 class="timeline-company">广州唯品会集团（唯品会）</h3>
+                <p class="timeline-role">高级iOS研发 · P2-2</p>
+              </div>
+              <time class="timeline-period">2015 — 2017</time>
+            </div>
+            <ul class="timeline-list">
+              <li>负责唯品会项目中消息中心与唯品生活模块的开发。后组件小 iOS 团队负责公司产品唯美与唯享客的开发。</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============ PROJECTS ============ -->
+      <section class="section reveal" aria-labelledby="proj-heading">
+        <h2 id="proj-heading" class="section-heading">
+          <span class="section-icon">🚀</span> 项目与作品
+        </h2>
+        <div class="projects-grid">
+          <a
+            class="project-card glass-card"
+            href="https://www.taptap.cn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="TapTap，访问官网 taptap.cn"
+          >
+            <h3 class="project-name">TapTap</h3>
+            <div class="project-media">
+              <img
+                class="project-media-img"
+                src="images/taptap-icon.png"
+                alt=""
+                width="56"
+                height="56"
+                decoding="async"
+              />
+            </div>
+            <p class="project-desc">从0到1搭建iOS客户端项目。国内头部的游戏分发社区平台。App Store上社交榜长期排名前10，AppStore 54W评论，4.7分。</p>
+            <div class="pills pills--sm">
+              <span class="pill pill--primary">Swift</span>
+              <span class="pill">负责人/团队核心成员</span>
+              <span class="pill">客户端</span>
+            </div>
+            <div class="project-link-row">
+              <span class="project-link">
+                <span class="project-link-label">访问官网</span>
+                <span class="project-link-host">taptap.cn</span>
+                <svg class="project-link-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </span>
+            </div>
+          </a>
+          <a
+            class="project-card glass-card"
+            href="https://www.bxapp.cn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="比心陪练，访问官网 bxapp.cn"
+          >
+            <h3 class="project-name">比心陪练</h3>
+            <div class="project-media">
+              <img
+                class="project-media-img"
+                src="images/bixin-icon.png"
+                alt=""
+                width="56"
+                height="56"
+                decoding="async"
+              />
+            </div>
+            <p class="project-desc">
+              从0到1自研IM SDK，承接百万级流程的IM业务系统。App Store上社交榜排名30，AppStore 32W评论，4.5分。
+            </p>
+            <div class="pills pills--sm">
+              <span class="pill pill--primary">Objective-C</span>
+              <span class="pill">IM团队负责人</span>
+              <span class="pill">客户端</span>
+            </div>
+            <div class="project-link-row">
+              <span class="project-link">
+                <span class="project-link-label">访问官网</span>
+                <span class="project-link-host">bxapp.cn</span>
+                <svg class="project-link-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </span>
+            </div>
+          </a>
+          <a
+            class="project-card glass-card"
+            href="https://www.vip.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="唯品会，访问官网 vip.com"
+          >
+            <h3 class="project-name">唯品会</h3>
+            <div class="project-media">
+              <img
+                class="project-media-img"
+                src="images/vipshop-icon.png"
+                alt=""
+                width="56"
+                height="56"
+                decoding="async"
+              />
+            </div>
+            <p class="project-desc">
+              特卖电商业务中的 iOS 应用（如消息中心、唯品生活、唯美、唯享客等模块）。
+            </p>
+            <div class="pills pills--sm">
+              <span class="pill pill--primary">Objective-C</span>
+              <span class="pill">iOS团队核心成员</span>
+              <span class="pill">电商</span>
+            </div>
+            <div class="project-link-row">
+              <span class="project-link">
+                <span class="project-link-label">访问官网</span>
+                <span class="project-link-host">vip.com</span>
+                <svg class="project-link-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </span>
+            </div>
+          </a>
+          <a
+            class="project-card glass-card"
+            href="https://union.vip.com/recruit/pc"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="唯享客，唯品会联盟 union.vip.com"
+          >
+            <h3 class="project-name">唯享客</h3>
+            <div class="project-media">
+              <img
+                class="project-media-img"
+                src="images/weixiangke-icon.png"
+                alt=""
+                width="56"
+                height="56"
+                decoding="async"
+              />
+            </div>
+            <p class="project-desc">
+              唯品会旗下购物返利与分享导购独立 App，团队核心开发成员。
+            </p>
+            <div class="pills pills--sm">
+              <span class="pill pill--primary">Objective-C</span>
+              <span class="pill">团队核心成员</span>
+              <span class="pill">导购 / 联盟</span>
+            </div>
+            <div class="project-link-row">
+              <span class="project-link">
+                <span class="project-link-label">唯品会联盟 · 唯享客</span>
+                <span class="project-link-host">union.vip.com</span>
+                <svg class="project-link-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </span>
+            </div>
+          </a>
+          <a
+            class="project-card glass-card"
+            href="https://my.oschina.net/u/2340880/?key=blog"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="开源中国技术博客"
+          >
+            <h3 class="project-name">开源中国技术博客</h3>
+            <div class="project-media">
+              <img
+                class="project-media-img"
+                src="images/oschina-icon.png"
+                alt=""
+                width="56"
+                height="56"
+                decoding="async"
+              />
+            </div>
+            <p class="project-desc">技术文章与实践经验分享，超100万阅读量。</p>
+            <div class="pills pills--sm">
+              <span class="pill pill--primary">iOS</span>
+              <span class="pill">技术写作</span>
+            </div>
+            <div class="project-link-row">
+              <span class="project-link">
+                <span class="project-link-label">打开博客</span>
+                <span class="project-link-host">my.oschina.net</span>
+                <svg class="project-link-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </span>
+            </div>
+          </a>
+          <a
+            class="project-card glass-card"
+            href="https://edu.51cto.com/lecturer/11633026.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="51CTO 个人课堂"
+          >
+            <h3 class="project-name">51CTO 个人课堂</h3>
+            <div class="project-media">
+              <img
+                class="project-media-img"
+                src="images/51cto-icon.png"
+                alt=""
+                width="56"
+                height="56"
+                decoding="async"
+              />
+            </div>
+            <p class="project-desc">在线课程与教学，涵盖 iOS 进阶、多线程、设计模式等方向，上千学员。</p>
+            <div class="pills pills--sm">
+              <span class="pill">课程</span>
+              <span class="pill">iOS</span>
+            </div>
+            <div class="project-link-row">
+              <span class="project-link">
+                <span class="project-link-label">进入课堂</span>
+                <span class="project-link-host">edu.51cto.com</span>
+                <svg class="project-link-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- ============ EDUCATION ============ -->
+      <section class="section reveal" aria-labelledby="edu-heading">
+        <h2 id="edu-heading" class="section-heading">
+          <span class="section-icon">🎓</span> 教育背景
+        </h2>
+        <div class="edu-stack">
+          <div class="glass-card edu-card">
+            <div class="edu-card-main">
+              <h3 class="edu-school">
+                亚利桑那州立大学
+                <span class="edu-abbr">Arizona State University（ASU）</span>
+              </h3>
+              <p class="edu-degree">硕士（在职） · Computing And Technology · GPA 4.0/4.0</p>
+              <div class="edu-credentials-fade">
+                <div
+                  class="edu-credentials-scroll"
+                  role="region"
+                  aria-label="学位证书、学位说明与海牙认证，可左右滑动查看"
+                  tabindex="0"
+                >
+                <div class="edu-credentials-track">
+                  <div class="edu-credentials-item">
+                    <div class="edu-diploma" role="group" aria-label="ASU 硕士学位毕业证书">
+                      <p class="edu-diploma-heading">学位证书 · Ira A. Fulton Schools of Engineering</p>
+                      <figure class="edu-diploma-figure">
+                        <img
+                          class="edu-diploma-img"
+                          src="images/asu-diploma.png"
+                          alt="亚利桑那州立大学工程硕士学位证书：Master of Engineering，With Distinction，授予 Yihui Zhang，2025年5月"
+                          width="800"
+                          height="600"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <figcaption class="edu-diploma-caption">
+                          Master of Engineering · With Distinction · Ira A. Fulton Schools of Engineering · May 2025
+                        </figcaption>
+                      </figure>
+                    </div>
+                  </div>
+                  <div class="edu-credentials-item">
+                    <div class="edu-specialization" role="group" aria-label="ASU 学位说明：Computing and Technology 专业方向">
+                      <p class="edu-diploma-heading">学位说明 · Academic Specialization</p>
+                      <figure class="edu-diploma-figure">
+                        <img
+                          class="edu-diploma-img"
+                          src="images/asu-specialization.png"
+                          alt="亚利桑那州立大学学位说明证书：Yihui Zhang 在工程硕士学位（Master of Engineering）项下完成 Computing and Technology 学术专业方向，2025年5月12日"
+                          width="800"
+                          height="600"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <figcaption class="edu-diploma-caption">
+                          Computing and Technology · Academic Specialization（M.Eng.）· May 12, 2025 · Ira A. Fulton Schools of
+                          Engineering
+                        </figcaption>
+                      </figure>
+                    </div>
+                  </div>
+                  <div class="edu-credentials-item">
+                    <div class="edu-apostille" role="group" aria-label="亚利桑那州海牙认证 Apostille">
+                      <p class="edu-diploma-heading">海牙认证 · Apostille（1961 Hague Convention）</p>
+                      <figure class="edu-diploma-figure">
+                        <img
+                          class="edu-diploma-img edu-apostille-img"
+                          src="images/asu-apostille.png"
+                          alt="美国亚利桑那州州务卿签发的海牙认证证书：Secretary of State of Arizona，凤凰城，2023年12月23日，证书编号 137229288，Adrian Fontes 签署"
+                          width="800"
+                          height="600"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                        <figcaption class="edu-diploma-caption edu-apostille-caption">
+                          State of Arizona · Secretary of State · Phoenix · Dec 23, 2023 · No. 137229288
+                        </figcaption>
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>
+              <div class="edu-certs" role="group" aria-label="ASU Ira A. Fulton 工程学院专业证书">
+                <p class="edu-certs-heading">专业证书 · Ira A. Fulton Schools of Engineering</p>
+                <div class="edu-certs-grid">
+                  <figure class="edu-cert">
+                    <img
+                      class="edu-cert-img"
+                      src="images/asu-cert-big-data.png"
+                      alt="亚利桑那州立大学 Fulton 工程学院：大数据（Big Data）专业证书"
+                      width="280"
+                      height="320"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <figcaption class="edu-cert-caption">Big Data · Professional Certification</figcaption>
+                  </figure>
+                  <figure class="edu-cert">
+                    <img
+                      class="edu-cert-img"
+                      src="images/asu-cert-ai-ml.png"
+                      alt="亚利桑那州立大学 Fulton 工程学院：人工智能与机器学习（AI and Machine Learning）专业证书"
+                      width="280"
+                      height="320"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <figcaption class="edu-cert-caption">AI and Machine Learning · Professional Certification</figcaption>
+                  </figure>
+                </div>
+              </div>
+              <a
+                class="edu-doc-link"
+                href="documents/SSR_TSRPT.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="查看 ASU 成绩单 PDF，满绩 GPA 4.0/4.0"
+              >
+                <span class="edu-doc-link-text">查看 ASU 成绩单（PDF）</span>
+                <span class="edu-doc-gpa">满绩 GPA 4.0/4.0</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                  <polyline points="15 3 21 3 21 9" />
+                  <line x1="10" y1="14" x2="21" y2="3" />
+                </svg>
+              </a>
+            </div>
+            <time class="timeline-period">2023 — 2025</time>
+          </div>
+          <div class="glass-card edu-card">
+            <div class="edu-card-main">
+              <h3 class="edu-school">
+                河南农业大学
+                <span class="edu-abbr">Henan Agricultural University</span>
+              </h3>
+              <p class="edu-degree">本科 · 电子信息科学与技术 · 工学学士</p>
+              <div class="edu-credentials-fade">
+                <div
+                  class="edu-credentials-scroll"
+                  role="region"
+                  aria-label="毕业证书与学士学位证书，可左右滑动查看"
+                  tabindex="0"
+                >
+                  <div class="edu-credentials-track">
+                    <div class="edu-credentials-item">
+                      <div class="edu-diploma" role="group" aria-label="河南农业大学毕业证书">
+                        <p class="edu-diploma-heading">毕业证书 · 普通高等学校</p>
+                        <figure class="edu-diploma-figure">
+                          <img
+                            class="edu-diploma-img"
+                            src="images/henau-graduation-certificate.png"
+                            alt="河南农业大学毕业证书：张益珲，电子信息科学与技术专业，四年制本科，2011年9月至2015年7月学习，2015年7月1日毕业，证书编号 104661201505003221"
+                            width="1200"
+                            height="800"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                          <figcaption class="edu-diploma-caption">
+                            电子信息科学与技术 · 四年制本科 · 2011.09 — 2015.07 · 2015年7月1日毕业
+                          </figcaption>
+                        </figure>
+                      </div>
+                    </div>
+                    <div class="edu-credentials-item">
+                      <div class="edu-specialization" role="group" aria-label="河南农业大学学士学位证书">
+                        <p class="edu-diploma-heading">学士学位证书</p>
+                        <figure class="edu-diploma-figure">
+                          <img
+                            class="edu-diploma-img"
+                            src="images/henau-degree-certificate.png"
+                            alt="河南农业大学学士学位证书：张益珲，电子信息科学与技术专业，授予工学学士学位，2015年6月18日，证书编号 1046642015001427"
+                            width="1200"
+                            height="800"
+                            loading="lazy"
+                            decoding="async"
+                          />
+                          <figcaption class="edu-diploma-caption">
+                            工学学士学位 · 电子信息科学与技术 · 2015年6月18日
+                          </figcaption>
+                        </figure>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="edu-highlights" role="group" aria-label="本科在校经历与荣誉">
+                <p class="edu-highlights-heading">在校经历</p>
+                <ul class="edu-highlights-list">
+                  <li>连续两年省三好学生</li>
+                  <li>校十佳大学生</li>
+                  <li>学院优秀毕业生</li>
+                  <li>全国大学生「挑战杯」大赛二等奖</li>
+                  <li>学院团委委员，办公室主任，宣传部部长</li>
+                </ul>
+              </div>
+            </div>
+            <time class="timeline-period">2011 — 2015</time>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ BOOKS ============ -->
+      <section class="section reveal" aria-labelledby="books-heading">
+        <h2 id="books-heading" class="section-heading">
+          <span class="section-icon">📚</span> 出版书籍
+        </h2>
+        <div class="glass-card books-card">
+          <ul class="books-list">
+            <li class="books-item">
+              <div class="books-item-inner">
+                <div class="books-item-cover">
+                  <img
+                    src="images/book-9787302649120-cover.jpg"
+                    alt="《TypeScript+Vue.js前端开发从入门到精通》封面"
+                    width="140"
+                    height="140"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="books-item-body">
+                  <span class="books-title">TypeScript+Vue.js前端开发从入门到精通</span>
+                  <span class="books-meta">
+                    <abbr title="国际标准书号">ISBN</abbr>
+                    <span class="books-isbn" translate="no">978-7-302-64912-0</span>
+                    <span class="books-sep" aria-hidden="true">·</span>
+                    <time datetime="2024-01">2024年1月出版</time>
+                  </span>
+                  <span class="books-extra">清华大学出版社 · 张益珲 编著</span>
+                </div>
+              </div>
+            </li>
+            <li class="books-item">
+              <div class="books-item-inner">
+                <div class="books-item-cover">
+                  <img
+                    src="images/book-9787302665700-cover.jpg"
+                    alt="《Vue.js 3.x+Express全栈开发：从0到1打造商城项目》封面"
+                    width="140"
+                    height="140"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="books-item-body">
+                  <span class="books-title">Vue.js 3.x+Express全栈开发：从0到1打造商城项目</span>
+                  <span class="books-meta">
+                    <abbr title="国际标准书号">ISBN</abbr>
+                    <span class="books-isbn" translate="no">978-7-302-66570-0</span>
+                    <span class="books-sep" aria-hidden="true">·</span>
+                    <time datetime="2024-07">2024年7月出版</time>
+                  </span>
+                  <span class="books-extra">清华大学出版社 · 张益珲 编著</span>
+                </div>
+              </div>
+            </li>
+            <li class="books-item">
+              <div class="books-item-inner">
+                <div class="books-item-cover">
+                  <img
+                    src="images/book-9787302641216-cover.jpg"
+                    alt="《循序渐进Vue.js 3.x前端开发实战》封面"
+                    width="140"
+                    height="140"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="books-item-body">
+                  <span class="books-title">循序渐进Vue.js 3.x前端开发实战</span>
+                  <span class="books-meta">
+                    <abbr title="国际标准书号">ISBN</abbr>
+                    <span class="books-isbn" translate="no">978-7-302-64121-6</span>
+                    <span class="books-sep" aria-hidden="true">·</span>
+                    <time datetime="2023-08">2023年8月出版</time>
+                  </span>
+                  <span class="books-extra">清华大学出版社 · 张益珲、曹艳琴 编著</span>
+                </div>
+              </div>
+            </li>
+            <li class="books-item">
+              <div class="books-item-inner">
+                <div class="books-item-cover">
+                  <img
+                    src="images/book-9787302671305-cover.jpg"
+                    alt="《循序渐进Vue.js 3.x前端开发实践》封面"
+                    width="140"
+                    height="140"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="books-item-body">
+                  <span class="books-title">循序渐进Vue.js 3.x前端开发实践</span>
+                  <span class="books-meta">
+                    <abbr title="国际标准书号">ISBN</abbr>
+                    <span class="books-isbn" translate="no">978-7-302-67130-5</span>
+                    <span class="books-sep" aria-hidden="true">·</span>
+                    <time datetime="2024-09">2024年9月出版</time>
+                  </span>
+                  <span class="books-extra">清华大学出版社 · 张益珲 编著</span>
+                </div>
+              </div>
+            </li>
+            <li class="books-item">
+              <div class="books-item-inner">
+                <div class="books-item-cover">
+                  <img
+                    src="images/book-9787522622569-cover.jpg"
+                    alt="《鸿蒙HarmonyOS移动开发指南》封面"
+                    width="140"
+                    height="140"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="books-item-body">
+                  <span class="books-title">鸿蒙HarmonyOS移动开发指南</span>
+                  <span class="books-meta">
+                    <abbr title="国际标准书号">ISBN</abbr>
+                    <span class="books-isbn" translate="no">978-7-5226-2256-9</span>
+                    <span class="books-sep" aria-hidden="true">·</span>
+                    <time datetime="2024-03">2024年3月出版</time>
+                  </span>
+                  <span class="books-extra">中国水利水电出版社 · 张益珲 编著</span>
+                </div>
+              </div>
+            </li>
+            <li class="books-item">
+              <div class="books-item-inner">
+                <div class="books-item-cover">
+                  <img
+                    src="images/book-9787302589761-cover.jpg"
+                    alt="《每个人的Python：数学、算法和游戏编程训练营》封面"
+                    width="140"
+                    height="140"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="books-item-body">
+                  <span class="books-title">每个人的Python：数学、算法和游戏编程训练营</span>
+                  <span class="books-meta">
+                    <abbr title="国际标准书号">ISBN</abbr>
+                    <span class="books-isbn" translate="no">978-7-302-58976-1</span>
+                    <span class="books-sep" aria-hidden="true">·</span>
+                    <time datetime="2021-10">2021年10月出版</time>
+                  </span>
+                  <span class="books-extra">清华大学出版社 · 张益珲 编著</span>
+                </div>
+              </div>
+            </li>
+            <li class="books-item">
+              <div class="books-item-inner">
+                <div class="books-item-cover">
+                  <img
+                    src="images/book-9787302534013-cover.jpg"
+                    alt="《教孩子学Python编程》封面"
+                    width="140"
+                    height="140"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="books-item-body">
+                  <span class="books-title">教孩子学Python编程</span>
+                  <span class="books-meta">
+                    <abbr title="国际标准书号">ISBN</abbr>
+                    <span class="books-isbn" translate="no">978-7-302-53401-3</span>
+                    <span class="books-sep" aria-hidden="true">·</span>
+                    <time datetime="2019-09">2019年9月出版</time>
+                  </span>
+                  <span class="books-extra">清华大学出版社 · 张益珲 编著</span>
+                </div>
+              </div>
+            </li>
+            <li class="books-item">
+              <div class="books-item-inner">
+                <div class="books-item-cover">
+                  <img
+                    src="images/book-9787302616757-cover.jpg"
+                    alt="《小程序与云开发从入门到实践》封面"
+                    width="140"
+                    height="140"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="books-item-body">
+                  <span class="books-title">小程序与云开发从入门到实践</span>
+                  <span class="books-meta">
+                    <abbr title="国际标准书号">ISBN</abbr>
+                    <span class="books-isbn" translate="no">978-7-302-61675-7</span>
+                    <span class="books-sep" aria-hidden="true">·</span>
+                    <time datetime="2022-09">2022年9月出版</time>
+                  </span>
+                  <span class="books-extra">清华大学出版社 · 张益珲 编著</span>
+                </div>
+              </div>
+            </li>
+            <li class="books-item">
+              <div class="books-item-inner">
+                <div class="books-item-cover">
+                  <img
+                    src="images/book-9787302595656-cover.jpg"
+                    alt="《循序渐进Vue.js 3前端开发实战》封面"
+                    width="140"
+                    height="140"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="books-item-body">
+                  <span class="books-title">循序渐进Vue.js 3前端开发实战</span>
+                  <span class="books-meta">
+                    <abbr title="国际标准书号">ISBN</abbr>
+                    <span class="books-isbn" translate="no">978-7-302-59565-6</span>
+                    <span class="books-sep" aria-hidden="true">·</span>
+                    <time datetime="2022-01">2022年1月出版</time>
+                  </span>
+                  <span class="books-extra">清华大学出版社 · 张益珲 编著</span>
+                </div>
+              </div>
+            </li>
+            <li class="books-item">
+              <div class="books-item-inner">
+                <div class="books-item-cover">
+                  <img
+                    src="images/book-9787302498131-cover.jpg"
+                    alt="《React Native全教程：移动端跨平台应用开发》封面"
+                    width="140"
+                    height="140"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="books-item-body">
+                  <span class="books-title">React Native全教程：移动端跨平台应用开发</span>
+                  <span class="books-meta">
+                    <abbr title="国际标准书号">ISBN</abbr>
+                    <span class="books-isbn" translate="no">978-7-302-49813-1</span>
+                    <span class="books-sep" aria-hidden="true">·</span>
+                    <time datetime="2018-04">2018年4月出版</time>
+                  </span>
+                  <span class="books-extra">清华大学出版社 · 张益珲 编著</span>
+                </div>
+              </div>
+            </li>
+            <li class="books-item">
+              <div class="books-item-inner">
+                <div class="books-item-cover">
+                  <img
+                    src="images/book-9787302559191-cover.jpg"
+                    alt="《iOS面试一战到底》封面"
+                    width="140"
+                    height="140"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="books-item-body">
+                  <span class="books-title">iOS面试一战到底</span>
+                  <span class="books-meta">
+                    <abbr title="国际标准书号">ISBN</abbr>
+                    <span class="books-isbn" translate="no">978-7-302-55919-1</span>
+                    <span class="books-sep" aria-hidden="true">·</span>
+                    <time datetime="2020-09">2020年9月出版</time>
+                  </span>
+                  <span class="books-extra">清华大学出版社 · 张益珲 著</span>
+                </div>
+              </div>
+            </li>
+            <li class="books-item">
+              <div class="books-item-inner">
+                <div class="books-item-cover">
+                  <img
+                    src="images/book-9787121361524-cover.jpg"
+                    alt="《iOS性能优化实战》封面"
+                    width="140"
+                    height="140"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="books-item-body">
+                  <span class="books-title">iOS性能优化实战</span>
+                  <span class="books-meta">
+                    <abbr title="国际标准书号">ISBN</abbr>
+                    <span class="books-isbn" translate="no">978-7-121-36152-4</span>
+                    <span class="books-sep" aria-hidden="true">·</span>
+                    <time datetime="2019-05">2019年5月出版</time>
+                  </span>
+                  <span class="books-extra">电子工业出版社 · 珲少 著</span>
+                </div>
+              </div>
+            </li>
+            <li class="books-item">
+              <div class="books-item-inner">
+                <div class="books-item-cover">
+                  <img
+                    src="images/book-9787302527473-cover.jpg"
+                    alt="《Swift 4：从零到精通iOS开发》封面"
+                    width="140"
+                    height="140"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="books-item-body">
+                  <span class="books-title">Swift 4：从零到精通iOS开发</span>
+                  <span class="books-meta">
+                    <abbr title="国际标准书号">ISBN</abbr>
+                    <span class="books-isbn" translate="no">978-7-302-52747-3</span>
+                    <span class="books-sep" aria-hidden="true">·</span>
+                    <time datetime="2019-05">2019年5月出版</time>
+                  </span>
+                  <span class="books-extra">清华大学出版社 · 张益珲 编著</span>
+                </div>
+              </div>
+            </li>
+            <li class="books-item">
+              <div class="books-item-inner">
+                <div class="books-item-cover">
+                  <img
+                    src="images/book-9787302588641-cover.jpg"
+                    alt="《Swift 5：从零到精通iOS开发训练营》封面"
+                    width="140"
+                    height="140"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="books-item-body">
+                  <span class="books-title">Swift 5：从零到精通iOS开发训练营</span>
+                  <span class="books-meta">
+                    <abbr title="国际标准书号">ISBN</abbr>
+                    <span class="books-isbn" translate="no">978-7-302-58864-1</span>
+                    <span class="books-sep" aria-hidden="true">·</span>
+                    <time datetime="2019-01">2019年1月出版</time>
+                  </span>
+                  <span class="books-extra">清华大学出版社 · 张益珲 编著</span>
+                </div>
+              </div>
+            </li>
+            <li class="books-item">
+              <div class="books-item-inner">
+                <div class="books-item-cover">
+                  <img
+                    src="images/book-9787121381089-cover.jpg"
+                    alt="《微信小程序开发实战》封面"
+                    width="140"
+                    height="140"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="books-item-body">
+                  <span class="books-title">微信小程序开发实战</span>
+                  <span class="books-meta">
+                    <abbr title="国际标准书号">ISBN</abbr>
+                    <span class="books-isbn" translate="no">978-7-121-38108-9</span>
+                    <span class="books-sep" aria-hidden="true">·</span>
+                    <time datetime="2019-12">2019年12月出版</time>
+                  </span>
+                  <span class="books-extra">电子工业出版社 · 张益珲 著</span>
+                </div>
+              </div>
+            </li>
+            <li class="books-item">
+              <div class="books-item-inner">
+                <div class="books-item-cover">
+                  <img
+                    src="images/book-9787302539049-cover.jpg"
+                    alt="《用Flutter极速构建原生应用》封面"
+                    width="140"
+                    height="140"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="books-item-body">
+                  <span class="books-title">用Flutter极速构建原生应用</span>
+                  <span class="books-meta">
+                    <abbr title="国际标准书号">ISBN</abbr>
+                    <span class="books-isbn" translate="no">978-7-302-53904-9</span>
+                    <span class="books-sep" aria-hidden="true">·</span>
+                    <time datetime="2019-11">2019年11月出版</time>
+                  </span>
+                  <span class="books-extra">清华大学出版社 · 张益珲 编著</span>
+                </div>
+              </div>
+            </li>
+            <li class="books-item">
+              <div class="books-item-inner">
+                <div class="books-item-cover">
+                  <img
+                    src="images/book-9787302469209-cover.jpg"
+                    alt="《Swift从入门到精通》封面"
+                    width="140"
+                    height="140"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="books-item-body">
+                  <span class="books-title">Swift从入门到精通</span>
+                  <span class="books-meta">
+                    <abbr title="国际标准书号">ISBN</abbr>
+                    <span class="books-isbn" translate="no">978-7-302-46920-9</span>
+                    <span class="books-sep" aria-hidden="true">·</span>
+                    <time datetime="2017-05">2017年5月出版</time>
+                  </span>
+                  <span class="books-extra">清华大学出版社 · 张益珲 编著</span>
+                </div>
+              </div>
+            </li>
+            <li class="books-item">
+              <div class="books-item-inner">
+                <div class="books-item-cover">
+                  <img
+                    src="images/book-9787302506386-cover.jpg"
+                    alt="《现代JavaScript编程：经典范例与实践技巧》封面"
+                    width="140"
+                    height="140"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="books-item-body">
+                  <span class="books-title">现代JavaScript编程：经典范例与实践技巧</span>
+                  <span class="books-meta">
+                    <abbr title="国际标准书号">ISBN</abbr>
+                    <span class="books-isbn" translate="no">978-7-302-50638-6</span>
+                    <span class="books-sep" aria-hidden="true">·</span>
+                    <time datetime="2018-09">2018年9月出版</time>
+                  </span>
+                  <span class="books-extra">清华大学出版社 · 张益珲、吕远 编著</span>
+                </div>
+              </div>
+            </li>
+            <li class="books-item">
+              <div class="books-item-inner">
+                <div class="books-item-cover">
+                  <img
+                    src="images/book-9787302483564-cover.jpg"
+                    alt="《iOS开发实战：从入门到上架App Store》封面"
+                    width="140"
+                    height="140"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="books-item-body">
+                  <span class="books-title">iOS开发实战：从入门到上架App Store</span>
+                  <span class="books-meta">
+                    <abbr title="国际标准书号">ISBN</abbr>
+                    <span class="books-isbn" translate="no">978-7-302-48356-4</span>
+                    <span class="books-sep" aria-hidden="true">·</span>
+                    <time datetime="2017-10">2017年10月出版</time>
+                  </span>
+                  <span class="books-extra">清华大学出版社 · 张益珲 编著</span>
+                </div>
+              </div>
+            </li>
+            <li class="books-item">
+              <div class="books-item-inner">
+                <div class="books-item-cover">
+                  <img
+                    src="images/book-9787302441847-cover.jpg"
+                    alt="《iOS开发实战：从零基础到App Store上架》封面"
+                    width="140"
+                    height="140"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="books-item-body">
+                  <span class="books-title">iOS开发实战：从零基础到App Store上架</span>
+                  <span class="books-meta">
+                    <abbr title="国际标准书号">ISBN</abbr>
+                    <span class="books-isbn" translate="no">978-7-302-44184-7</span>
+                    <span class="books-sep" aria-hidden="true">·</span>
+                    <time datetime="2016-07">2016年7月出版</time>
+                  </span>
+                  <span class="books-extra">清华大学出版社 · 张益珲 编著</span>
+                </div>
+              </div>
+            </li>
+            <li class="books-item">
+              <div class="books-item-inner">
+                <div class="books-item-cover">
+                  <img
+                    src="images/book-9787121290459-cover.jpg"
+                    alt="《7天玩转iOS界面开发》封面"
+                    width="140"
+                    height="140"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="books-item-body">
+                  <span class="books-title">7天玩转iOS界面开发</span>
+                  <span class="books-meta">
+                    <abbr title="国际标准书号">ISBN</abbr>
+                    <span class="books-isbn" translate="no">978-7-121-29045-9</span>
+                    <span class="books-sep" aria-hidden="true">·</span>
+                    <time datetime="2016-06">2016年6月出版</time>
+                  </span>
+                  <span class="books-extra">电子工业出版社 · 张益珲 编著</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============ INFLUENCE · 荣誉墙 ============ -->
+      <section class="section reveal" aria-labelledby="influence-heading">
+        <h2 id="influence-heading" class="section-heading">
+          <span class="section-icon">🌟</span> 影响力
+        </h2>
+        <div class="glass-card honor-wall-card">
+          <div class="honor-wall-intro">
+            <h3 class="honor-wall-heading" id="honor-wall-heading">荣誉墙</h3>
+            <p class="honor-wall-lead">社区、出版社与平台颁发的部分荣誉</p>
+          </div>
+          <div class="honor-wall-masonry">
+          <ul class="honor-wall-grid" aria-labelledby="honor-wall-heading">
+            <li class="honor-tile-item">
+            <figure class="honor-tile">
+              <div class="honor-tile-media">
+                <img
+                  src="images/honors/honor-huawei-harmonyos-2020.png"
+                  alt="华为 HarmonyOS 系统课程开发者纪念章，授予张益珲，2020 年 11 月"
+                  width="640"
+                  height="480"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <figcaption class="honor-tile-caption">
+                <span class="honor-tile-title">HarmonyOS 系统课程开发者</span>
+                <span class="honor-tile-meta">华为 · 2020</span>
+              </figcaption>
+            </figure>
+            </li>
+            <li class="honor-tile-item">
+            <figure class="honor-tile">
+              <div class="honor-tile-media">
+                <img
+                  src="images/honors/honor-tencent-2022.png"
+                  alt="腾讯云开发者社区授予珲少 2022 年度潜力作者奖证书"
+                  width="640"
+                  height="480"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <figcaption class="honor-tile-caption">
+                <span class="honor-tile-title">年度潜力作者奖</span>
+                <span class="honor-tile-meta">腾讯云开发者社区 · 2022</span>
+              </figcaption>
+            </figure>
+            </li>
+            <li class="honor-tile-item">
+            <figure class="honor-tile">
+              <div class="honor-tile-media">
+                <img
+                  src="images/honors/honor-infoq-signed-2022.png"
+                  alt="InfoQ 写作社区签约作者荣誉证书，百位优质创作者签约计划第 3 季"
+                  width="640"
+                  height="480"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <figcaption class="honor-tile-caption">
+                <span class="honor-tile-title">写作社区签约作者</span>
+                <span class="honor-tile-meta">InfoQ · 2022</span>
+              </figcaption>
+            </figure>
+            </li>
+            <li class="honor-tile-item">
+            <figure class="honor-tile">
+              <div class="honor-tile-media">
+                <img
+                  src="images/honors/honor-51cto-blogger-star-2022.png"
+                  alt="51CTO 博客 2022 年度博主之星水晶奖杯，珲少"
+                  width="640"
+                  height="480"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <figcaption class="honor-tile-caption">
+                <span class="honor-tile-title">年度博主之星</span>
+                <span class="honor-tile-meta">51CTO 博客 · 2022</span>
+              </figcaption>
+            </figure>
+            </li>
+            <li class="honor-tile-item">
+            <figure class="honor-tile">
+              <div class="honor-tile-media">
+                <img
+                  src="images/honors/honor-aliyun-contract-blogger.png"
+                  alt="阿里云开发者社区乘风者计划签约博主证书，晖少"
+                  width="640"
+                  height="480"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <figcaption class="honor-tile-caption">
+                <span class="honor-tile-title">乘风者计划 · 签约博主</span>
+                <span class="honor-tile-meta">阿里云开发者社区</span>
+              </figcaption>
+            </figure>
+            </li>
+            <li class="honor-tile-item">
+            <figure class="honor-tile">
+              <div class="honor-tile-media">
+                <img
+                  src="images/honors/honor-aliyun-star-medal.png"
+                  alt="阿里云开发者社区乘风者计划星级博主纪念章"
+                  width="640"
+                  height="480"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <figcaption class="honor-tile-caption">
+                <span class="honor-tile-title">乘风者计划 · 星级博主</span>
+                <span class="honor-tile-meta">阿里云开发者社区</span>
+              </figcaption>
+            </figure>
+            </li>
+            <li class="honor-tile-item">
+            <figure class="honor-tile">
+              <div class="honor-tile-media">
+                <img
+                  src="images/honors/honor-aliyun-expert-blogger.png"
+                  alt="阿里云开发者社区乘风者计划专家博主证书，张益珲"
+                  width="640"
+                  height="480"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <figcaption class="honor-tile-caption">
+                <span class="honor-tile-title">乘风者计划 · 专家博主</span>
+                <span class="honor-tile-meta">阿里云开发者社区 · 张益珲</span>
+              </figcaption>
+            </figure>
+            </li>
+            <li class="honor-tile-item">
+            <figure class="honor-tile">
+              <div class="honor-tile-media">
+                <img
+                  src="images/honors/honor-tsinghua-bestseller-2024.png"
+                  alt="清华大学出版社 2024 计算机类畅销新书奖奖杯，《谁在驱动：ChatGPT+人工智能行业应用实战》"
+                  width="640"
+                  height="480"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <figcaption class="honor-tile-caption">
+                <span class="honor-tile-title">计算机类畅销新书奖</span>
+                <span class="honor-tile-meta">清华大学出版社 · 2024</span>
+              </figcaption>
+            </figure>
+            </li>
+            <li class="honor-tile-item">
+            <figure class="honor-tile">
+              <div class="honor-tile-media">
+                <img
+                  src="images/honors/honor-tsinghua-outstanding-2024-cert.png"
+                  alt="清华大学出版社授予张益珲老师 2024 年度卓越贡献著译者荣誉证书"
+                  width="640"
+                  height="480"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <figcaption class="honor-tile-caption">
+                <span class="honor-tile-title">卓越贡献著译者</span>
+                <span class="honor-tile-meta">清华大学出版社 · 2024</span>
+              </figcaption>
+            </figure>
+            </li>
+            <li class="honor-tile-item">
+            <figure class="honor-tile">
+              <div class="honor-tile-media">
+                <img
+                  src="images/honors/honor-tsinghua-outstanding-2024-trophy.png"
+                  alt="清华大学出版社 2024 卓越贡献著译者纪念奖杯，张益珲"
+                  width="640"
+                  height="480"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <figcaption class="honor-tile-caption">
+                <span class="honor-tile-title">卓越贡献著译者 · 纪念奖杯</span>
+                <span class="honor-tile-meta">清华大学出版社 · 2024</span>
+              </figcaption>
+            </figure>
+            </li>
+          </ul>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer reveal" aria-labelledby="footer-links-heading">
+        <h2 id="footer-links-heading" class="footer-heading">友情链接</h2>
+        <ul class="footer-links">
+          <li>
+            <a
+              href="https://huishao.cc/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link"
+              >珲少的技术博客</a>
+            <span class="footer-link-host" translate="no">huishao.cc</span>
+          </li>
+          <li>
+            <a
+              href="https://huisao.cc/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer-link"
+              >清风</a>
+            <span class="footer-link-host" translate="no">huisao.cc</span>
+          </li>
+        </ul>
+      </footer>
+    </main>
+
+    <script>
+      /* Theme toggle */
+      const toggle = document.getElementById("themeToggle");
+      const html = document.documentElement;
+      const stored = localStorage.getItem("theme");
+      if (stored) html.dataset.theme = stored;
+
+      toggle.addEventListener("click", () => {
+        const next = html.dataset.theme === "dark" ? "light" : "dark";
+        html.dataset.theme = next;
+        localStorage.setItem("theme", next);
+      });
+
+      /* Scroll reveal：进入出现、离开消失；滞回避免在阈值附近反复切换导致抖动 */
+      const REVEAL_THRESHOLDS = Array.from({ length: 101 }, (_, i) => i / 100);
+
+      function revealVisibleHeight(el) {
+        const r = el.getBoundingClientRect();
+        const h = window.innerHeight;
+        const top = Math.max(r.top, 0);
+        const bottom = Math.min(r.bottom, h);
+        return Math.max(0, bottom - top);
+      }
+
+      function syncReveal(el, visiblePx, elH) {
+        const on = el.classList.contains("revealed");
+        // 对于高度极大的模块（如出版书籍、荣誉墙），按比例会导致触发条件过于苛刻（需要滚动很多才显示）。
+        // 因此增加固定像素上限：最多只需进入视口 120px 即判定为可见。
+        const enterPx = Math.min(elH * 0.14, 120);
+        const exitPx = Math.min(elH * 0.06, 60);
+
+        if (!on && visiblePx >= enterPx) {
+          el.classList.add("revealed");
+        } else if (on && visiblePx <= exitPx) {
+          el.classList.remove("revealed");
+        }
+      }
+
+      const reveals = document.querySelectorAll(".reveal");
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            syncReveal(e.target, e.intersectionRect.height, e.boundingClientRect.height || 1);
+          });
+        },
+        { threshold: REVEAL_THRESHOLDS }
+      );
+
+      reveals.forEach((el) => {
+        revealObserver.observe(el);
+        const r = el.getBoundingClientRect();
+        syncReveal(el, revealVisibleHeight(el), r.height || 1);
+      });
+
+      /* Antigravity Interactive Canvas & Cursor Glow */
+      const canvas = document.getElementById('interactive-canvas');
+      const ctx = canvas.getContext('2d');
+      const cursorGlow = document.getElementById('cursorGlow');
+      
+      let width, height;
+      let particles = [];
+      let mouse = { x: -1000, y: -1000 };
+
+      // Make sure we update layout variables
+      function resize() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+        initParticles();
+      }
+      window.addEventListener('resize', resize);
+      
+      // Track mouse position
+      window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+        
+        // Move spotlight glow
+        cursorGlow.style.opacity = '1';
+        // Center the 600x600 glow
+        cursorGlow.style.transform = `translate(${e.clientX - 300}px, ${e.clientY - 300}px)`;
+      });
+
+      window.addEventListener('mouseout', () => {
+        mouse.x = -1000;
+        mouse.y = -1000;
+        cursorGlow.style.opacity = '0';
+      });
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height + height * 0.2; // Start slightly below screen
+          this.size = Math.random() * 2 + 0.5;
+          this.baseX = this.x;
+          this.speedY = Math.random() * 0.5 + 0.2; // Antigravity float up
+          this.speedX = (Math.random() - 0.5) * 0.3; // Slight horizontal drift
+        }
+        update() {
+          // Antigravity upward movement
+          this.y -= this.speedY;
+          this.x += this.speedX;
+          
+          // Wrap around to bottom
+          if (this.y < -50) {
+            this.y = height + 50;
+            this.x = Math.random() * width;
+          }
+
+          // Mouse repulsion interaction
+          let dx = mouse.x - this.x;
+          let dy = mouse.y - this.y;
+          let distance = Math.sqrt(dx * dx + dy * dy);
+          let maxDist = 150;
+          
+          if (distance < maxDist) {
+            // Push away from mouse
+            let force = (maxDist - distance) / maxDist;
+            let forceDirectionX = dx / distance;
+            let forceDirectionY = dy / distance;
+            
+            // Adjust multiplier for stronger/weaker repulsion
+            this.x -= forceDirectionX * force * 3;
+            this.y -= forceDirectionY * force * 3;
+          } else {
+            // Slowly return to natural vertical path
+            let deltaX = this.x - this.baseX;
+            this.x -= deltaX * 0.01;
+          }
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          
+          // Use theme-aware colors
+          const isDark = document.documentElement.dataset.theme === "dark";
+          const opacity = this.size * 0.2;
+          ctx.fillStyle = isDark ? `rgba(255, 255, 255, ${opacity})` : `rgba(0, 122, 255, ${opacity})`;
+          ctx.fill();
+        }
+      }
+
+      function initParticles() {
+        particles = [];
+        // Particle density based on screen width
+        let count = Math.min(window.innerWidth / 15, 80); 
+        for (let i = 0; i < count; i++) {
+          particles.push(new Particle());
+        }
+      }
+
+      function animateCanvas() {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => {
+          p.update();
+          p.draw();
+        });
+        requestAnimationFrame(animateCanvas);
+      }
+
+      // Start
+      resize();
+      animateCanvas();
+    </script>
+  </body>
+</html>
