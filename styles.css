@@ -182,10 +182,10 @@ a:hover {
 }
 
 /* ---------- Theme toggle ---------- */
-.theme-toggle {
+.theme-toggle,
+.pdf-export {
   position: fixed;
   top: 20px;
-  right: 20px;
   z-index: 100;
   display: flex;
   align-items: center;
@@ -203,14 +203,30 @@ a:hover {
   box-shadow: var(--shadow-card);
 }
 
-.theme-toggle:hover {
+.theme-toggle {
+  right: 20px;
+}
+
+.pdf-export {
+  right: 76px;
+}
+
+.theme-toggle:hover,
+.pdf-export:hover {
   background: var(--bg-surface-hover);
   color: var(--text-1);
   transform: scale(1.05);
 }
 
-.theme-toggle:active {
+.theme-toggle:active,
+.pdf-export:active {
   transform: scale(0.95);
+}
+
+.pdf-export:disabled {
+  cursor: wait;
+  opacity: 0.65;
+  transform: none;
 }
 
 [data-theme="dark"] .icon-sun { display: block; }
@@ -1691,18 +1707,62 @@ a.project-card:focus-visible {
 
 /* ---------- Print ---------- */
 @media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  :root,
+  [data-theme="dark"],
+  [data-theme="light"] {
+    --bg-base: #fff;
+    --bg-surface: #fff;
+    --bg-surface-hover: #fff;
+    --border: #d9d9df;
+    --text-1: #1c1c1e;
+    --text-2: #3f3f46;
+    --text-3: #6b7280;
+    --accent: #0057c2;
+    --accent-soft: #eef5ff;
+    --pill-bg: #f4f4f5;
+    --pill-primary-bg: #e8f1ff;
+    --pill-primary-text: #0057c2;
+    --dot-color: #0057c2;
+    --timeline-line: #d9d9df;
+    --shadow-card: none;
+    --blur: 0;
+  }
+
   .bg-noise,
   .bg-blobs,
   .theme-toggle,
+  .pdf-export,
   .cursor-glow,
   #interactive-canvas {
     display: none !important;
   }
 
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  html {
+    scroll-behavior: auto !important;
+  }
+
   body {
     background: #fff !important;
     color: #1c1c1e !important;
-    font-size: 10pt;
+    font-size: 9.5pt;
+    line-height: 1.45;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
   }
 
   .page {
@@ -1710,12 +1770,36 @@ a.project-card:focus-visible {
     padding: 0;
   }
 
+  .section {
+    margin-bottom: 8mm;
+    break-inside: auto;
+  }
+
+  .section-heading {
+    margin-bottom: 3mm;
+    font-size: 10pt;
+    letter-spacing: 0.04em;
+    break-after: avoid;
+  }
+
+  .section-icon {
+    filter: none;
+  }
+
   .glass-card {
-    background: #fff;
-    backdrop-filter: none;
-    border: 1px solid #e5e5ea;
-    box-shadow: none;
-    break-inside: avoid;
+    background: #fff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: 1px solid #d9d9df;
+    border-radius: 8px;
+    padding: 12px;
+    overflow: visible;
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  .glass-card::before {
+    display: none;
   }
 
   .reveal {
@@ -1724,8 +1808,41 @@ a.project-card:focus-visible {
     pointer-events: auto !important;
   }
 
+  .hero {
+    margin-bottom: 8mm;
+  }
+
+  .hero-panel {
+    padding: 12px;
+  }
+
   .hero-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr auto;
+    gap: 14px;
+    align-items: start;
+  }
+
+  .hero-name {
+    font-size: 24pt;
+    letter-spacing: 0;
+  }
+
+  .hero-title,
+  .hero-signature,
+  .hero-tagline,
+  .hero-highlights,
+  .hero-actions {
+    margin-bottom: 8px;
+  }
+
+  .hero-highlights {
+    padding-left: 1.2em;
+  }
+
+  .avatar {
+    width: 82px;
+    height: 82px;
+    border-radius: 16px;
   }
 
   .hero-cta {
@@ -1743,24 +1860,88 @@ a.project-card:focus-visible {
     color: #1c1c1e !important;
   }
 
-  a[href^="http"]::after {
-    content: " (" attr(href) ")";
-    font-size: 8pt;
-    color: #888;
+  .pills {
+    gap: 5px;
+  }
+
+  .pill {
+    padding: 3px 8px;
+    font-size: 8.5pt;
+    border-color: #d9d9df;
+  }
+
+  .skills-group + .skills-group {
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+
+  .timeline {
+    padding-left: 18px;
   }
 
   .timeline::before {
-    background: #ccc;
+    left: 4px;
+    background: #d9d9df;
+  }
+
+  .timeline-item {
+    margin-bottom: 12px;
   }
 
   .timeline-dot {
+    left: -20px;
+    top: 18px;
+    width: 9px;
+    height: 9px;
     background: #007aff;
     box-shadow: 0 0 0 3px #fff;
+  }
+
+  .timeline-header {
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .timeline-company,
+  .edu-school {
+    font-size: 12pt;
+  }
+
+  .timeline-role,
+  .edu-degree,
+  .timeline-list,
+  .project-desc,
+  .books-meta,
+  .books-extra {
+    font-size: 9pt;
+  }
+
+  .timeline-list li + li {
+    margin-top: 4px;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .project-media-img {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
   }
 
   .project-card:hover {
     transform: none;
     box-shadow: none;
+  }
+
+  .edu-stack {
+    gap: 8px;
+  }
+
+  .edu-card {
+    gap: 10px;
   }
 
   .edu-credentials-fade {
@@ -1780,30 +1961,143 @@ a.project-card:focus-visible {
   }
 
   .edu-credentials-track {
-    flex-wrap: wrap;
-    gap: 12px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: 100%;
+    gap: 8px;
   }
 
   .edu-credentials-item {
-    flex: 1 1 220px;
+    min-width: 0;
     scroll-snap-align: none;
   }
 
+  .edu-credentials-item .edu-diploma-heading {
+    min-height: auto;
+    margin-bottom: 5px;
+  }
+
   .edu-credentials-item .edu-diploma-img {
+    width: 100%;
     height: auto;
-    max-height: none;
+    max-height: 45mm;
     object-fit: initial;
     object-position: initial;
+    border-radius: 6px;
+  }
+
+  .edu-diploma-caption,
+  .edu-credentials-item .edu-diploma-caption,
+  .edu-credentials-item .edu-apostille-caption,
+  .edu-cert-caption {
+    font-size: 7.5pt;
+    line-height: 1.25;
+    margin-top: 4px;
+  }
+
+  .edu-certs-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .edu-cert-img {
+    max-width: 36mm;
+    border-radius: 6px;
+  }
+
+  .edu-henau-honor-thumbs {
+    gap: 5px;
+  }
+
+  .edu-henau-honor-thumb {
+    border-radius: 4px;
+  }
+
+  .edu-henau-honor-thumb img {
+    width: 34px;
+    height: 24px;
+  }
+
+  .edu-cert-lightbox {
+    display: none !important;
+  }
+
+  .books-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 10px;
+  }
+
+  .books-item {
+    border-top: none;
+    padding-top: 0;
+    break-inside: avoid-page;
+    page-break-inside: avoid;
+  }
+
+  .books-item-inner {
+    gap: 8px;
+  }
+
+  .books-item-cover img {
+    width: 44px;
+    height: 44px;
+    border-radius: 5px;
+  }
+
+  .books-title {
+    font-size: 9pt;
+    line-height: 1.25;
+  }
+
+  .books-meta,
+  .books-isbn,
+  .books-extra {
+    font-size: 7.5pt;
+    line-height: 1.25;
+  }
+
+  .honor-wall-card {
+    overflow: visible !important;
   }
 
   .honor-wall-grid {
     column-count: 2;
-    column-gap: 12px;
+    column-gap: 8px;
+  }
+
+  .honor-tile-item {
+    margin-bottom: 8px;
   }
 
   .honor-tile:hover {
     transform: none;
     border-color: #e5e5ea;
     box-shadow: none;
+  }
+
+  .honor-tile {
+    border-radius: 6px;
+  }
+
+  .honor-tile-media {
+    padding: 6px;
+  }
+
+  .honor-tile-caption {
+    padding: 6px 8px;
+  }
+
+  .honor-tile-title {
+    font-size: 8.5pt;
+  }
+
+  .honor-tile-meta,
+  .footer-link-host {
+    font-size: 7.5pt;
+  }
+
+  .footer {
+    padding-top: 4mm;
   }
 }

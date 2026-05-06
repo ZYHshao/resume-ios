@@ -33,6 +33,15 @@
       <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
       <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     </button>
+    <button class="pdf-export" id="pdfExport" type="button" aria-label="导出为 PDF" title="导出为 PDF">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+        <polyline points="14 2 14 8 20 8" />
+        <path d="M9 15h6" />
+        <path d="M12 12v6" />
+        <path d="m9 15 3 3 3-3" />
+      </svg>
+    </button>
 
     <main class="page">
       <!-- ============ HERO（在线落地页式头部） ============ -->
@@ -1798,6 +1807,78 @@
       // Start
       resize();
       animateCanvas();
+
+      const pdfExport = document.getElementById("pdfExport");
+
+      function waitForImage(img) {
+        img.loading = "eager";
+        img.decoding = "sync";
+
+        if (img.complete && img.naturalWidth > 0) {
+          return img.decode ? img.decode().catch(() => undefined) : Promise.resolve();
+        }
+
+        return new Promise((resolve) => {
+          const done = () => resolve();
+          const timeout = window.setTimeout(done, 3000);
+
+          img.addEventListener(
+            "load",
+            () => {
+              window.clearTimeout(timeout);
+              if (img.decode) {
+                img.decode().catch(() => undefined).finally(done);
+              } else {
+                done();
+              }
+            },
+            { once: true }
+          );
+          img.addEventListener(
+            "error",
+            () => {
+              window.clearTimeout(timeout);
+              done();
+            },
+            { once: true }
+          );
+
+          if (img.currentSrc || img.src) {
+            img.src = img.currentSrc || img.src;
+          }
+        });
+      }
+
+      async function preparePdfExport() {
+        document.body.classList.add("pdf-exporting");
+        document.querySelectorAll(".reveal").forEach((el) => el.classList.add("revealed"));
+        document.querySelectorAll("details").forEach((el) => (el.open = true));
+
+        if (document.fonts?.ready) {
+          await document.fonts.ready.catch(() => undefined);
+        }
+
+        const images = Array.from(document.images).filter((img) => img.getAttribute("src"));
+        await Promise.all(images.map(waitForImage));
+        await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+      }
+
+      pdfExport?.addEventListener("click", async () => {
+        pdfExport.disabled = true;
+        pdfExport.setAttribute("aria-busy", "true");
+        pdfExport.title = "正在准备 PDF...";
+
+        await preparePdfExport();
+        window.print();
+
+        pdfExport.disabled = false;
+        pdfExport.removeAttribute("aria-busy");
+        pdfExport.title = "导出为 PDF";
+      });
+
+      window.addEventListener("afterprint", () => {
+        document.body.classList.remove("pdf-exporting");
+      });
     </script>
   </body>
 </html>
